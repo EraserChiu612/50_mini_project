@@ -80,7 +80,7 @@ h1 {
 
 .split.left {
     left: 0;
-    background: url('#');
+    background: url('./img/ps.jpg');
     background-repeat: no-repeat;
     background-size: cover;
 
@@ -105,7 +105,7 @@ h1 {
 
 .split.right {
     right: 0;
-    background: url('#');
+    background: url('./img/xbox.jpg');
     background-repeat: no-repeat;
     background-size: cover;
 

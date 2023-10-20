@@ -14,12 +14,12 @@
 					<input type="text" required />
 					<label>Email</label>
 					<!-- <label>
-                    <span style="transition-delay: 0ms ;">E</span>
-                    style="transition-delay: 50ms ;">m</span>
-                    style="transition-delay: 100ms ;">a</span>
-                    style="transition-delay: 150ms ;">i</span>
-                    style="transition-delay: 200ms ;">l</span>
-                    </label> -->
+          <span style="transition-delay: 0ms ;">E</span>
+          style="transition-delay: 50ms ;">m</span>
+          style="transition-delay: 100ms ;">a</span>
+          style="transition-delay: 150ms ;">i</span>
+          style="transition-delay: 200ms ;">l</span>
+          </label> -->
 				</div>
 
 				<div class="form-control">
@@ -33,6 +33,19 @@
 			</form>
 		</div>
 
-		<script src="index.js"></script>
+		<script>
+			const labels = document.querySelectorAll('.form-control label')
+
+			labels.forEach(label => {
+				label.innerHTML = label.innerText
+					// string.split() 分割字串成陣列
+					.split('')
+					.map(
+						(letter, idx) =>
+							`<span style="transition-delay:${idx * 50}ms">${letter}</span>`
+					)
+					.join('')
+			})
+		</script>
 	</body>
 </html>

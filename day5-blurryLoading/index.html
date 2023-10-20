@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="./style.css" />
+		<title>Blurry Loading</title>
+	</head>
+	<body>
+		<section class="bg"></section>
+		<div class="load-text">0%</div>
+		<script>
+			const loadText = document.querySelector('.load-text')
+			const bg = document.querySelector('.bg')
+
+			let load = 0
+			let int = setInterval(blurring, 30)
+
+			function blurring() {
+				load++
+
+				if (load > 99) {
+					clearInterval(int)
+				}
+				loadText.innerText = `${load}%`
+				loadText.style.opacity = scale(load, 0, 100, 1, 0)
+				bg.style.filter = `blur(${scale(load, 0, 100, 30, 0)}px)`
+			}
+			// 透明度轉換mode
+			const scale = (num, in_min, in_max, out_min, out_max) => {
+				return (
+					((num - in_min) * (out_max - out_min)) / (in_max - in_min) + out_min
+				)
+			}
+		</script>
+	</body>
+</html>
