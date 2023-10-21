@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+		<title>Random Images Feed</title>
+	</head>
+	<body>
+		<h1>Random Images Feed</h1>
+		<div class="container"></div>
+
+		<script>
+			const container = document.querySelector('.container')
+			const unsplashURL = 'https://source.unsplash.com/random/'
+			const rows = 5
+
+			for (let i = 0; i < rows * 3; i++) {
+				const img = document.createElement('img')
+				img.src = `${unsplashURL}${getRandomSize()}`
+				container.appendChild(img)
+			}
+
+			function getRandomNr() {
+				return Math.ceil(Math.random() * 10) + 300
+			}
+			function getRandomSize() {
+				return `${getRandomNr()}x${getRandomNr()}`
+			}
+		</script>
+	</body>
+</html>

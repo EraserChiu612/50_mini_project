@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+		<title>Todo List</title>
+	</head>
+	<body>
+		<h1>todos</h1>
+		<form id="form">
+			<input
+				type="text"
+				class="input"
+				id="input"
+				placeholder="Enter your todo"
+				autocomplete="off"
+			/>
+
+			<ul class="todos" id="todos"></ul>
+		</form>
+		<small
+			>left click to toggle completed. <br />
+			Right click to delete todo</small
+		>
+
+		<script>
+			const form = document.querySelector('#form')
+			const input = document.querySelector('#input')
+			const todosUL = document.querySelector('#todos')
+			// JSON.parse() 方法將 JSON 字串轉換成 JavaScript 物件
+			const todos = JSON.parse(localStorage.getItem('todos'))
+
+			if (todos) {
+				todos.forEach(todo => addTodo(todo))
+			}
+
+			form.addEventListener('submit', e => {
+				e.preventDefault()
+				addTodo()
+			})
+
+			function addTodo(todo) {
+				let todoText = input.value
+
+				if (todo) {
+					todoText = todo.text
+				}
+
+				if (todoText) {
+					const todoEl = document.createElement('li')
+					if (todo && todo.completed) {
+						todoEl.classList.add('completed')
+					}
+
+					todoEl.innerText = todoText
+					todoEl.addEventListener('click', () => {
+						todoEl.classList.toggle('completed')
+						updateLS()
+					})
+					todoEl.addEventListener('contextmenu', e => {
+						e.preventDefault()
+						todoEl.remove()
+						updateLS()
+					})
+
+					todosUL.appendChild(todoEl)
+					input.value = ''
+
+					updateLS()
+				}
+			}
+			// localStorage 存取
+			function updateLS() {
+				const todosEl = document.querySelectorAll('li')
+
+				const todos = []
+
+				todosEl.forEach(todoEl => {
+					todos.push({
+						text: todoEl.innerText,
+						completed: todoEl.classList.contains('completed'),
+					})
+				})
+				// JSON.stringify() 方法將 JavaScript 值轉換為 JSON 字串
+				localStorage.setItem('todos', JSON.stringify(todos))
+			}
+		</script>
+	</body>
+</html>
