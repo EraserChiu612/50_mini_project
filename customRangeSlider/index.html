@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+		<title>Custom Range Slider</title>
+	</head>
+	<body>
+		<h2>Custom Range Slider</h2>
+		<div class="range-container">
+			<input type="range" id="range" min="0" max="100" />
+			<label for="range">50</label>
+		</div>
+		<script>
+			const range = document.querySelector('#range')
+
+			range.addEventListener('input', e => {
+				const value = +e.target.value
+				const label = e.target.nextElementSibling
+
+				const range_width = getComputedStyle(e.target).getPropertyValue('width')
+				const label_width = getComputedStyle(label).getPropertyValue('width')
+
+				// 前面+可以str變num,去除px的方法
+				const num_width = +range_width.substring(0, range_width.length - 2)
+
+				const num_label_width = +label_width.substring(
+					0,
+					label_width.length - 2
+				)
+
+				const max = +e.target.max
+				const min = +e.target.min
+				// 這邊的left是指label的left , 這邊的value是指range的value
+				const left =
+					value * (num_width / max) -
+					num_label_width / 2 +
+					scale(value, min, max, 10, -10)
+
+				label.style.left = `${left}px`
+
+				label.innerHTML = value
+			})
+
+			function scale(number, inMin, inMax, outMin, outMax) {
+				return ((number - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin
+			}
+		</script>
+	</body>
+</html>
+
+<!-- 
+https://stackoverflow.com/questions/10756313/javascript-jquery-map-a-range-of-numbers-to-another-range-of-numbers
+
+function scale (number, inMin, inMax, outMin, outMax) {
+  return (number - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
+} -->

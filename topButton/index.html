@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			.container {
+				height: 3000px;
+				background-color: #ccc;
+			}
+			#goTopBtn {
+				position: fixed;
+				bottom: 30px;
+				right: 30px;
+				border-radius: 50%;
+				background-color: transparent;
+				cursor: pointer;
+				transition: all 0.3s ease-in-out;
+				opacity: 0;
+				visibility: hidden;
+				border: none;
+			}
+			#goTopBtn img {
+				width: 50px;
+				height: 50px;
+			}
+			#goTopBtn.show {
+				opacity: 1;
+				visibility: visible;
+			}
+
+			#goTopBtn:active {
+				box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.7);
+				transform: scale(0.8);
+			}
+		</style>
+		<title>Top Button</title>
+	</head>
+	<body>
+		<div class="container"></div>
+		<button id="goTopBtn" title="goTopBtn">
+			<img src="./img/gotop.png" alt="" />
+		</button>
+		<script>
+			window.onscroll = scrollFn //每當畫面捲動觸發一次
+
+			document.querySelector('#goTopBtn').onclick = topFn //點擊按鈕觸發一次
+
+			function scrollFn() {
+				if (
+					document.body.scrollTop > 200 ||
+					document.documentElement.scrollTop > 200
+				) {
+					document.querySelector('#goTopBtn').classList.add('show')
+				} else {
+					document.querySelector('#goTopBtn').classList.remove('show')
+				}
+			}
+
+			// 重置scrollTop這個變數的值
+			function topFn() {
+				document.body.scrollTop = 0 // For Safari
+				document.documentElement.scrollTop = 0 // For Chrome, Firefox, IE and Opera
+			}
+		</script>
+	</body>
+</html>
