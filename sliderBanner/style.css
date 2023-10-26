@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&family=Ubuntu&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: "Noto Sans TC", sans-serif;
+}
+
+body {
+  height: 100%;
+  background-color: #ecfaff;
+}
+
+.play {
+  width: 500px;
+  height: 640px;
+  overflow: hidden;
+  position: relative;
+  margin: 50px auto 0;
+
+}
+
+ol {
+  position: absolute;
+  right: 10px;
+  bottom: 5px;
+  z-index: 2;
+}
+
+ol li {
+  float: left;
+  margin-right: 3px;
+  padding: 0 2px;
+  display: inline;
+  cursor: pointer;
+  background: #fcf2cf;
+  border: 1px solid #f47500;
+}
+
+.active {
+  background: #f47500;
+  padding: 3px 8px;
+  font-weight: bold;
+  color: #ffffff;
+  background: #ffb442;
+  position: relative;
+  bottom: 2px;
+}
+
+ul {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+
+ul li {
+  width: 500px;
+  height: 640px;
+  float: left;
+}
+
+ul img {
+  float: left;
+  width: 500px;
+  height: 640px;
+}

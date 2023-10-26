@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"
+			integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw=="
+			crossorigin="anonymous"
+		></script>
+		<link rel="stylesheet" href="style.css" />
+		<title>Slider Banner</title>
+	</head>
+	<body>
+		<div class="play" id="play">
+			<ol>
+				<li class="active">1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+			</ol>
+			<ul>
+				<li>
+					<a href="#"><img src="./images/ad01.jpg" alt="ad1" /></a>
+				</li>
+				<li>
+					<a href="#"><img src="./images/ad02.jpg" alt="ad2" /></a>
+				</li>
+				<li>
+					<a href="#"><img src="./images/ad03.jpg" alt="ad3" /></a>
+				</li>
+				<li>
+					<a href="#"><img src="./images/ad04.jpg" alt="ad4" /></a>
+				</li>
+				<li>
+					<a href="#"><img src="./images/ad05.jpg" alt="ad5" /></a>
+				</li>
+				<li>
+					<a href="#"><img src="./images/ad01.jpg" alt="ad1" /></a>
+				</li>
+			</ul>
+		</div>
+
+		<script>
+			$(function () {
+				let allBtns = $('#play ol li')
+				let allUl = $('#play ul ')
+				let allLis = allUl.find('li')
+				let iNow = 0
+
+				allBtns.click(function () {
+					iNow = $(this).index()
+					tab()
+				})
+
+				$('#play').on({
+					mouseenter: function () {
+						clearInterval(timer)
+					},
+					mouseleave: function () {
+						timer = setInterval(function () {
+							iNow++
+							tab()
+						}, 2000)
+					},
+				})
+
+				let timer = setInterval(function () {
+					iNow++
+					tab()
+				}, 2000)
+
+				function tab() {
+					allBtns.attr('class', '').eq(iNow).attr('class', 'active')
+					if (iNow == allLis.length - 1) {
+						allBtns.eq(0).attr('class', 'active')
+					}
+
+					allUl.animate(
+						{
+							top: -iNow * 640,
+						},
+						500,
+						function () {
+							if (iNow == allLis.length - 1) {
+								iNow = 0
+								allUl.css('top', 0)
+							}
+						}
+					)
+				}
+			})
+		</script>
+	</body>
+</html>
