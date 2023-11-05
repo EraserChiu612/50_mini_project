@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="style.css" />
+		<title>Increment Counter</title>
+	</head>
+	<body>
+		<div class="counter-container">
+			<i class="bx bxl-youtube"></i>
+			<div class="counter" data-target="12000"></div>
+			<span>YouTube Subscribers</span>
+		</div>
+		<div class="counter-container">
+			<i class="bx bxl-instagram"></i>
+			<div class="counter" data-target="10000"></div>
+			<span>Instagram Followers</span>
+		</div>
+		<div class="counter-container">
+			<i class="bx bxl-facebook-square"></i>
+			<div class="counter" data-target="8000"></div>
+			<span>Facebook Fans</span>
+		</div>
+
+		<script>
+			const counters = document.querySelectorAll('.counter')
+
+			counters.forEach(counter => {
+				counter.innerText = '0'
+
+				const updateCounter = () => {
+					const target = +counter.getAttribute('data-target')
+					const c = +counter.innerText
+
+					const increment = target / 100
+
+					if (c < target) {
+						counter.innerText = `${Math.ceil(c + increment)}`
+						setTimeout(updateCounter, 1)
+					} else {
+						counter.innerText = target
+					}
+				}
+
+				updateCounter()
+			})
+		</script>
+	</body>
+</html>

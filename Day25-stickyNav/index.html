@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+
+		<title>Sticky Navigation</title>
+	</head>
+	<body>
+		<nav class="nav">
+			<div class="container">
+				<h1 class="logo"><a href="#">My Website</a></h1>
+				<ul>
+					<li><a href="" class="current">Home</a></li>
+					<li><a href="">About</a></li>
+					<li><a href="">Services</a></li>
+					<li><a href="">Contact</a></li>
+				</ul>
+			</div>
+		</nav>
+
+		<div class="hero">
+			<div class="container">
+				<h1>Welcome to My Website</h1>
+				<p>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi,
+					esse!
+				</p>
+			</div>
+		</div>
+
+		<section class="container content">
+			<h2>Content One</h2>
+			<p>
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, quod. Unde
+				ipsam quaerat perspiciatis voluptatem, quod recusandae a nostrum
+				doloremque reprehenderit sint cum possimus repellendus veniam enim quis.
+				Ab molestias quia assumenda omnis explicabo quidem cupiditate optio
+				obcaecati temporibus dolore incidunt rerum labore fugiat minima ex nemo
+				qui reiciendis officiis deleniti dolores natus, voluptates possimus
+				doloribus quod. Saepe ex in, repudiandae mollitia exercitationem
+				voluptatem quas placeat dignissimos autem, similique porro totam
+				laudantium itaque sint reprehenderit ut dolorum dolorem eaque eveniet
+				odio pariatur suscipit! Reiciendis quae soluta fugiat sequi vitae
+				sapiente inventore. Amet, deleniti officiis. Exercitationem ipsa quo
+				blanditiis quasi quis.
+			</p>
+
+			<h3>Contnet Two</h3>
+			<p>
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente quidem
+				qui tenetur laboriosam commodi deleniti harum earum quia, ducimus odit
+				ullam reiciendis fugit ratione esse eligendi quod, illum facilis
+				voluptates explicabo fuga mollitia cumque eos corporis in. Placeat,
+				nobis voluptatem? Quod hic magnam atque quisquam veniam inventore
+				asperiores tempora culpa sit, nesciunt libero exercitationem tenetur
+				ipsa corporis debitis nihil consectetur, sint sequi corrupti saepe
+				molestiae enim cumque commodi rerum! Eum provident vero, quisquam
+				consequatur fugit eius reiciendis quibusdam quae soluta earum numquam
+				debitis voluptates quo id deserunt aliquam laudantium nihil unde, amet
+				blanditiis, voluptate natus? Incidunt recusandae vero assumenda
+				adipisci.
+			</p>
+		</section>
+
+		<script>
+			const nav = document.querySelector('.nav')
+			window.addEventListener('scroll', fixNav)
+
+			function fixNav() {
+				if (window.scrollY > nav.offsetHeight + 150) {
+					nav.classList.add('active')
+				} else {
+					nav.classList.remove('active')
+				}
+			}
+		</script>
+	</body>
+</html>
